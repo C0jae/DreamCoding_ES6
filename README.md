@@ -99,3 +99,40 @@ console.log(ellie1 == ellie3);  // true
 ```
 * ellie1과 ellie2는 애초에 서로 다른 reference를 가지고 있기 때문에 false이다.
 * ellie1과 ellie3는 같은 reference를 사용하고 있기 때문에 true이다.
+
+***
+
+## Arrow Function - 22.04.22.(function.js)
+### Default Parameter
+``` Javascript
+// Default parameters
+function showMessage(message, from) {
+    console.log(`${message} by ${from}`);
+}
+showMessage("Hi!"); // Hi! by undefined
+```
+* ES6에 새롭게 추가된 기능
+* 함수에 필요한 파라미터가 들어오지 않았을 경우 해당 파라미터의 자리는 'undefined'로 표시된다.     
+
+### Rest Parameters
+``` Javascript
+// Rest Parameters
+function printAll(...args) {
+    for (let i = 0; i < args.length; i++) {
+        console.log(args[i]);
+    }
+
+    for (const arg of args) {
+        console.log(arg);
+    }
+
+    args.forEach(arg => {
+        console.log(arg);
+    });
+}
+printAll('a', 'b', 'c');
+// a
+// b
+// c
+```
+* 파라미터 변수 앞에 ' ... ' 을 추가하게 되면 배열 형태로 전달되어진다.
