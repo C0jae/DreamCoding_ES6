@@ -22,3 +22,11 @@ printAll('a', 'b', 'c');
 // a
 // b
 // c
+
+// Arrow function
+const simplePrint = function() {
+    console.log("simplePrint");
+}
+
+const arrowPrint = () => console.log("arrowPrint");
+const add = (a, b) => a + b;

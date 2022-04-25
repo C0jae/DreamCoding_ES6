@@ -136,3 +136,15 @@ printAll('a', 'b', 'c');
 // c
 ```
 * 파라미터 변수 앞에 ' ... ' 을 추가하게 되면 배열 형태로 전달되어진다.
+
+### Arrow Function
+``` Javascript
+// Arrow function
+const simplePrint = function() {
+    console.log("simplePrint");
+}
+
+const arrowPrint = () => console.log("arrowPrint");
+const add = (a, b) => a + b;
+```
+* 화살표 함수 : function, return을 적지 않고 간단히 함수를 나타낼 수 있다.
