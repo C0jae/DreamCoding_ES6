@@ -148,3 +148,67 @@ const arrowPrint = () => console.log("arrowPrint");
 const add = (a, b) => a + b;
 ```
 * 화살표 함수 : function, return을 적지 않고 간단히 함수를 나타낼 수 있다.
+
+***
+
+## 클래스와 오브젝트의 차이점
+### 클래스 선언
+```Javascript
+// 클래스 선언
+class Person {
+    // constructor
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // method
+    speak() {
+        console.log(`${this.name}: hello!`);
+    }
+}
+
+const ellie = new Person('ellie', 20);
+console.log(ellie.name);    // ellie
+console.log(ellie.age);     // 20
+console.log(ellie.speak)    // ellie: hello!
+```
+* 
+
+### Getter Setter
+``` Javascript
+// Getter Setter
+class User {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age
+    }
+}
+
+const user1 = new User('steve', 'job', -1);
+console.log(user1.age); // -1
+```
+* 지정되지 말아야 할 값이 지정되더라도 그대로 출력이 되어버린다.(나이 : -1)
+
+``` Javascript
+class User {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age
+    }
+
+    get age() {
+        return this._age;
+    }
+
+    set age(value) {
+        this._age = value < 0 ? 0 : value;  // 0 이하일 경우 0으로 세팅
+    }
+}
+
+const user1 = new User('steve', 'job', -1);
+console.log(user1.age); // 0
+```
+* get, set을 통해 내부적으로 조건을 주게되면 잘못된 값 입력에 대응이 가능하다.
