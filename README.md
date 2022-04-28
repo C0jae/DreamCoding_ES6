@@ -212,3 +212,64 @@ const user1 = new User('steve', 'job', -1);
 console.log(user1.age); // 0
 ```
 * get, set을 통해 내부적으로 조건을 주게되면 잘못된 값 입력에 대응이 가능하다.
+
+### Fields(public, private)
+``` Javascript
+// Fields(public, private)
+class Experiment {
+    publicFields = 2;
+    #privateFields = 0;
+}
+
+const experiment = new Experiment();
+console.log(experiment.publicFields);   // 2
+console.log(experiment.privateFields);  // undefined
+```
+* 클래스 내에서 #을 붙혀 변수명을 짓게되면 private 속성이 반영된다.
+* private 속성이 반영된 변수의 경우는 클래스 외부에서 출력할 수 없게된다.(undefined)
+
+### Inheritance
+``` Javascript
+// Inheritance
+class Shape {
+    constructor(width, height, color) {
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+
+    draw() {
+        console.log(`drawing ${this.color} color of`);
+    }
+
+    getArea() {
+        return this.width * this.height;
+    }
+}
+
+// 상속
+class Rectangle extends Shape { }
+class Triangle extends Shape {
+    draw() {
+        super.draw();
+        console.log("abc");
+    }
+    getArea() {
+        return this.width * this.height / 2;
+    }
+}
+
+const rectangle = new Rectangle(20, 20, 'blue');
+rectangle.draw();   // drawing blue color of
+console.log(rectangle.getArea());   // 400
+
+const triangle = new Rectangle(20, 20, 'red');
+triangle.draw();    // drawing red color of <= super.draw() : 부모 클래스의 draw()
+                    // abc : 자식 클래스의 draw() 재정의, 오버라이딩
+console.log(triangle.getArea());    // 200 : 자식클래스의 getArea 재정의
+```
+* 클래스의 상속
+* Shape : 부모 클래스
+* Rectangle, Triangle : 자식클래스
+* 부모클래스에서 정의한 메소드를 자식클래스에서 재정의 할 수 있다.(오버라이딩)
+* 재정의하는 메소드와 부모클래스의 메소드를 같이 쓰고 싶다면 super를 이용하여 부모클래스의 메소드를 가져온다.
